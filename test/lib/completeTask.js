@@ -3,23 +3,21 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var request = require('request');
 
-function tasksRoute() {
-  var tasks = new express.Router();
-  tasks.use(cors());
-  tasks.use(bodyParser());
+function completeTaskRoute() {
+  var completeTask = new express.Router();
+  completeTask.use(cors());
+  completeTask.use(bodyParser());
 
 
   // GET REST endpoint - query params may or may not be populated
-  tasks.get('/', function(req, res) {
-    console.log(new Date(), 'In tasks route GET / req.query=', req.query);
+  completeTask.get('/', function(req, res) {
+    console.log(new Date(), 'In completeTask route GET / req.query=', req.query);
     var options = {
-      method: 'GET',
-      json:true
+      method: 'POST'
     }
     request(encodeURI(req.query.url), options, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log(body);
-        res.json({msg: body});
+        res.json({msg: 'Task completed'});
       } else if (error){
         res.json({msg: 'Went wrong: ' + error});
       } else{
@@ -31,11 +29,10 @@ function tasksRoute() {
   // POST REST endpoint - note we use 'body-parser' middleware above to parse the request body in this route.
   // This can also be added in application.js
   // See: https://github.com/senchalabs/connect#middleware for a list of Express 4 middleware
-  tasks.post('/', function(req, res) {
-    
+  completeTask.post('/', function(req, res) {
   });
 
-  return tasks;
+  return completeTask;
 }
 
-module.exports = tasksRoute;
+module.exports = completeTaskRoute;

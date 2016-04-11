@@ -9,7 +9,6 @@ securableEndpoints = ['/tasks'];
 securableEndpoints = ['/taskContent'];
 securableEndpoints = ['/completeTask'];
 securableEndpoints = ['/startTask'];
-securableEndpoints = ['/claimTask'];
 
 var app = express();
 
@@ -30,7 +29,6 @@ app.use('/tasks', require('./lib/tasks.js')());
 app.use('/taskContent', require('./lib/taskContent.js')());
 app.use('/completeTask', require('./lib/completeTask.js')());
 app.use('/startTask', require('./lib/startTask.js')());
-app.use('/claimTask', require('./lib/claimTask.js')());
 
 // Important that this is last!
 app.use(mbaasExpress.errorHandler());
