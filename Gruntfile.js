@@ -55,7 +55,7 @@ module.exports = function(grunt) {
            * or a remote instance.
            */
           var serviceMap = {
-            'wbyyx52jcku3ynnqywa666ry': 'http://127.0.0.1:8001',
+            'i24hicsileulqzpwybj74w7c': 'http://127.0.0.1:8001',
             'SERVICE_GUID_2': 'https://host-and-path-to-service'
           };
           return JSON.stringify(serviceMap);
